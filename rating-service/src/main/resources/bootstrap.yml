@@ -6,9 +6,12 @@ spring:
         enabled: true
         service-id: config
       fail-fast: true
-      retry:
-        max-attempts: 10
+
 eureka:
   client:
+    region: default
+    registryFetchIntervalSeconds: 5
     serviceUrl:
       defaultZone: http://localhost:8082/eureka/
+    healthcheck:
+      enabled: true

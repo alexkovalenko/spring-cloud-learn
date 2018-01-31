@@ -1,6 +1,6 @@
-FROM openjdk:8-jdk-alpine
+FROM java:8-jre
 VOLUME /tmp
-ARG JAR_FILE
+ARG JAR_FILE=./target/rating-service.jar
 ADD ${JAR_FILE} app.jar
 EXPOSE 8084
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=docker","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
